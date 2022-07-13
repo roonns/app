@@ -6,6 +6,7 @@ from streamlit_lottie import st_lottie
 import json
 import requests
 import numpy as np
+from st_aggrid import AgGrid
 
 import streamlit.components.v1 as components
 from streamlit_pandas_profiling import st_profile_report
@@ -74,13 +75,18 @@ def main():
         if data_file is not None:
             df = pd.read_csv(data_file)
             check_dataframe = st.checkbox('View dataframe')
-
+            if check_dataframe:
+                AgGrid(df)
+            
+            
             #viewing the datatypes
             view_datatype = st.checkbox('View data type')
             if view_datatype:
                 df_1 = df.dtypes
                 st.markdown(''' Here is an overview of your datatypes in the dataset''')
                 st.dataframe(df_1.astype(str))
+                
+            
 
 
             # if date column exist in dataset the convert to date time
