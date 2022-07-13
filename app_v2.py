@@ -1,28 +1,19 @@
 import streamlit as st
 import pandas as pd
-import codecs
 from pandas_profiling import ProfileReport
 import time
 from streamlit_lottie import st_lottie
 import json
-import klib
 import requests
 import numpy as np
-from st_aggrid import AgGrid
 
 import streamlit.components.v1 as components
 from streamlit_pandas_profiling import st_profile_report
 
 #Custom components
-import sweetviz as sv
 import os
 
 st.config.set_option("server.maxUploadSize", 5000)
-
-def st_display_sweetviz(report_html, width=2000, height= 1000):
-    report_file = codecs.open(report_html, 'r')
-    page = report_file.read()
-    components.html(page, width= width, height=height, scrolling=True)
 
 
 def load_lottieurl(url: str):
@@ -83,9 +74,6 @@ def main():
         if data_file is not None:
             df = pd.read_csv(data_file)
             check_dataframe = st.checkbox('View dataframe')
-
-            if check_dataframe:
-                AgGrid(df)
 
             #viewing the datatypes
             view_datatype = st.checkbox('View data type')
