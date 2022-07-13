@@ -6,6 +6,7 @@ from streamlit_lottie import st_lottie
 import json
 import requests
 import numpy as np
+import Jinja2 
 
 import streamlit.components.v1 as components
 from streamlit_pandas_profiling import st_profile_report
